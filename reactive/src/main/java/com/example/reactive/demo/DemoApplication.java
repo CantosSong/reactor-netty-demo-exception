@@ -29,7 +29,7 @@ public class DemoApplication {
             return webClient.get().uri("http://127.0.0.1:9999/test").retrieve().bodyToMono(String.class);
         }
 
-        HttpClient httpClient = HttpClient.create().tcpConfiguration(tcp -> tcp.doOnConnected(c -> c.addHandler(new IdleStateHandler(5000, 5000, 5000, TimeUnit.MILLISECONDS))));
+        HttpClient httpClient = HttpClient.create();
 
         @GetMapping("test1")
         public Mono<HttpClientResponse> test1() {
