@@ -10,6 +10,7 @@ server.port=8888
 trace=true
 ```
 ab -c 100 -n1000 http://127.0.0.1:8888/test
+
 ab -c 100 -n1000 http://127.0.0.1:8888/test1
 
 ```
