@@ -1,6 +1,5 @@
 package com.example.reactive.demo;
 
-import io.netty.handler.timeout.IdleStateHandler;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +9,7 @@ import reactor.core.publisher.Mono;
 import reactor.netty.http.client.HttpClient;
 import reactor.netty.http.client.HttpClientResponse;
 
-import java.util.concurrent.TimeUnit;
+import javax.annotation.Resource;
 
 @SpringBootApplication
 public class DemoApplication {
@@ -29,7 +28,8 @@ public class DemoApplication {
             return webClient.get().uri("http://127.0.0.1:9999/test").retrieve().bodyToMono(String.class);
         }
 
-        HttpClient httpClient = HttpClient.create();
+        @Resource
+        HttpClient httpClient;
 
         @GetMapping("test1")
         public Mono<HttpClientResponse> test1() {
