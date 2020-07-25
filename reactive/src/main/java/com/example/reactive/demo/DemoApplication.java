@@ -36,5 +36,15 @@ public class DemoApplication {
             return httpClient.get().uri("http://127.0.0.1:9999/test").response();
         }
 
+        @GetMapping("test3")
+        public Mono<String> test3() {
+            return Mono.just("just test netty");
+        }
+
+        @GetMapping("test4")
+        public Mono<HttpClientResponse> test4() {
+            return httpClient.get().uri("http://127.0.0.1:8888/test3").response();
+        }
+
     }
 }
